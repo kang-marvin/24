@@ -59,6 +59,7 @@ code {
 
 .numberPanel {
   display: flex;
+  padding: 8px;
 }
 
 .horizontal_component {
