@@ -9,7 +9,7 @@ class TwentyFourCounter extends React.Component {
     return (
       <div className="-card">
         <div className="card-body">
-          <NumberComponent counter='0123456789' />
+          <NumberComponent counter='88:88:88' />
         </div>
       </div>
     );

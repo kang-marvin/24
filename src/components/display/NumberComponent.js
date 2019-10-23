@@ -2,6 +2,7 @@ import React from "react";
 
 import HorizontalComponent from "../../components/common/horizontal/HorizontalComponent";
 import VerticalComponent from "../../components/common/vertical/VerticalComponent";
+import TimerIndicator from "../common/shared/TimerIndicator";
 
 import extractorutils from "../../utils/extractorUtils";
 
@@ -21,22 +22,28 @@ const NumberComponent = props => {
   return (
     <div style= {{ display: 'inline-flex' }}>
       {Object.values(numberArray)
-        .filter(counter => numberBuildingBlocks[counter] !== undefined)
+        .filter(counter => (numberBuildingBlocks[counter] !== undefined) || counter === ':')
         .map(counter => {
           const numberBuilderBlocks = numberBuildingBlocks[counter] || defaultNumberBuildingBlocks;
-          return(
-            <div className="numberPanel">
-              <VerticalComponent
-                { ...numberBuilderBlocks['left'] }
-              />
-              <HorizontalComponent
-                { ...numberBuilderBlocks['center'] }
-              />
-              <VerticalComponent
-                { ...numberBuilderBlocks['right'] }
-              />
-            </div>
-          )
+          if (counter === ':'){
+            return (
+              <TimerIndicator />
+            )
+          } else {
+            return(
+              <div className="numberPanel">
+                <VerticalComponent
+                  { ...numberBuilderBlocks['left'] }
+                />
+                <HorizontalComponent
+                  { ...numberBuilderBlocks['center'] }
+                />
+                <VerticalComponent
+                  { ...numberBuilderBlocks['right'] }
+                />
+              </div>
+            )
+          }
       })}
     </div>
   )

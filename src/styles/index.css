@@ -41,6 +41,7 @@ code {
 /* Element variable declaration */
 
 :root {
+  --timer-spacing-addition: .3rem;
   --number-block-builder-background-color: #9e962c;
   --number-block-builder-size-length: 2rem;
   --number-block-builder-size-thickness: .5rem;
@@ -83,14 +84,14 @@ code {
 
 .timer_indicator_component {
   background-color: var(--number-block-builder-background-color);
-  width:            var(--number-block-builder-size-thickness);
-  height:           var(--number-block-builder-size-thickness);
-  border-radius:    var(--timer-indicator-border-radius);
+  width:            calc(var(--number-block-builder-size-thickness) + var(--timer-spacing-addition) );
+  height:           calc(var(--number-block-builder-size-thickness) + var(--timer-spacing-addition) );
+  border-radius:    60%;
   margin:           0 auto;
 }
 
 .IndicatorPanel {
-  background-color: azure;
+  width: var(--number-block-builder-size-length);
 }
 
 .vertical-All {
@@ -98,5 +99,6 @@ code {
 }
 
 .time-spacing {
-  margin-bottom: var(--number-block-builder-size-thickness);
+  height: .5rem;
+  margin-bottom: calc(var(--number-block-builder-size-thickness) + var(--timer-spacing-addition) );
 }
