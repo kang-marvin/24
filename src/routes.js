@@ -7,7 +7,7 @@ import authorizationUtils from "./utils/authorizationUtils";
 
 /** Import containers here */
 import ErrorComponent from "./containers/errors/ErrorComponent";
-import PublicComponent from "./containers/guests/PublicComponent";
+import TwentyFourCounter from "./containers/guests/TwentyFourCounter";
 import APIStatus from "./containers/users/APIStatus";
 
 const routes = state => {
@@ -37,13 +37,13 @@ const routes = state => {
         <Route
           exact
           path="/public"
-          component={PublicComponent}
+          component={TwentyFourCounter}
         />
         {/* Root Path */}
         <Route
           exact
           path="/"
-          component={PublicComponent} />
+          component={TwentyFourCounter} />
         {/* Error Handling Routes */}
         <Route
           component={ErrorComponent}
