@@ -1,150 +1,121 @@
 export const numberBuildingBlocks = {
   "0": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
       "showBottom": "true"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
-      "showCenter": "false",
       "showBottom": "true"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "1": {
-    "leftComponent": {
-      "showTop": "false",
-      "showBottom": "false"
-    },
-    "centerComponent": {
-      "showTop": "false",
-      "showCenter": "false",
-      "showBottom": "false"
-    },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "2": {
-    "leftComponent": {
-      "showTop": "false",
+    "left": {
       "showBottom": "true"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
-      "showBottom": "false"
     }
   },
   "3": {
-    "leftComponent": {
-      "showTop": "false",
-      "showBottom": "false"
-    },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "4": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
-      "showBottom": "false"
     },
-    "centerComponent": {
-      "showTop": "false",
+    "center": {
       "showCenter": "true",
-      "showBottom": "false"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "5": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
-      "showBottom": "false"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
-      "showTop": "false",
+    "right": {
       "showBottom": "true"
     }
   },
   "6": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
       "showBottom": "true"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
-      "showTop": "false",
+    "right": {
       "showBottom": "true"
     }
   },
   "7": {
-    "leftComponent": {
-      "showTop": "false",
-      "showBottom": "false"
-    },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
-      "showCenter": "false",
-      "showBottom": "false"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "8": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
       "showBottom": "true"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
   },
   "9": {
-    "leftComponent": {
+    "left": {
       "showTop": "true",
-      "showBottom": "false"
     },
-    "centerComponent": {
+    "center": {
       "showTop": "true",
       "showCenter": "true",
       "showBottom": "true"
     },
-    "rightComponent": {
+    "right": {
       "showTop": "true",
       "showBottom": "true"
     }
