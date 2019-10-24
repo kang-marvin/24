@@ -13,13 +13,11 @@ const App = props => {
       <div>
         <div className="sticky-top">
           {/* Add Header Component here */}
-          <p>Header Component</p>
         </div>
         <div className="container-fluid">
           {children}
         </div>
         {/* Add Footer Component here  */}
-        <p>Footer Component</p>
       </div>
     </BrowserRouter>
   );
