@@ -10,8 +10,11 @@ class TwentyFourCounter extends React.Component {
 
   constructor (props) {
     super(props);
+
+    const today = new Date();
+    const timeNow = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     this.state = {
-      counter: '24:00:00'
+      counter: timeNow
     }
   }
 
