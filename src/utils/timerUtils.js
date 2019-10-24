@@ -35,6 +35,8 @@ class timerUtils {
     const stringfyCount = (count-1).toString()
     if (count < 1) {
       return maxCount.toString()
+    } else if (stringfyCount.length === 1) {
+      return ('0'.concat(stringfyCount))
     }
     return stringfyCount
   }
