@@ -20,8 +20,8 @@ class TwentyFourCounter extends React.Component {
 
   componentDidMount() {
     setInterval(() => {
-      const currentTimerCount = new timerUtils().decrementCounter(this.state.counter)
-      const nextTimerCount = new timerUtils().decrementCounter(currentTimerCount.nextCounter)
+      const currentTimerCount = new timerUtils().incrementCounter(this.state.counter)
+      const nextTimerCount = new timerUtils().incrementCounter(currentTimerCount.nextCounter)
       this.setState({counter: nextTimerCount.currentCounter})
     }, 1000);
   }

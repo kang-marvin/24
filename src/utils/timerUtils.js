@@ -6,18 +6,18 @@ class timerUtils {
     this.cleanInputLength = this.cleanInputLength.bind(this);
   }
 
-  decrementCounter(currentCounter) {
+  incrementCounter(currentCounter) {
     const counterArray = currentCounter
       .split(':')
       .map(count => parseInt(count))
 
     const secondsCounter = this.changeInputCount(counterArray[2])
 
-    const minutesCounter = secondsCounter === '00'
+    const minutesCounter = secondsCounter === '59'
       ? this.changeInputCount(counterArray[1])
       : this.cleanInputCount(counterArray[1].toString())
 
-    const hoursCounter = minutesCounter === '00'
+    const hoursCounter = minutesCounter === '59'
       ? this.changeInputCount(counterArray[0], 24)
       : this.cleanInputCount(counterArray[0].toString(), 24)
 
@@ -32,18 +32,23 @@ class timerUtils {
   }
 
   changeInputCount = (count, maxCount=59) => {
-    const stringfyCount = (count-1).toString()
-    if (count < 1) {
+    const stringfyCount = (count + 1).toString()
+    if (count < 0) {
       return maxCount.toString()
+    } else if ((count + 1) > maxCount) {
+      return '00'
     } else if (stringfyCount.length === 1) {
       return ('0'.concat(stringfyCount))
+    } else {
+      return stringfyCount
     }
-    return stringfyCount
   }
 
-  cleanInputCount = (count, maxCount=60) => {
-    if (count == 0 || count == maxCount) {
-      return (maxCount - 1).toString()
+  cleanInputCount = (count, maxCount= 60) => {
+    if (count < 0) {
+      return (count + 1).toString()
+    } else if (count >= maxCount) {
+      return '0'
     } else {
       return count
     }
