@@ -14,14 +14,18 @@ class TwentyFourCounter extends React.Component {
     const today = new Date();
     const timeNow = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     this.state = {
-      counter: timeNow
+      counter: timeNow,
+      counterConfig: {
+        defaultMinimumValue: 0,
+        defaultMaximumValue: 59
+      }
     }
   }
 
   componentDidMount() {
     setInterval(() => {
-      const currentTimerCount = new timerUtils().incrementCounter(this.state.counter)
-      const nextTimerCount = new timerUtils().incrementCounter(currentTimerCount.nextCounter)
+      const currentTimerCount = new timerUtils(this.state.counterConfig).incrementTimer(this.state.counter)
+      const nextTimerCount = new timerUtils(this.state.counterConfig).incrementTimer(currentTimerCount.nextCounter)
       this.setState({counter: nextTimerCount.currentCounter})
     }, 1000);
   }

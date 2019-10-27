@@ -1,66 +1,95 @@
+
 class timerUtils {
 
-  constructor() {
-    this.changeInputCount = this.changeInputCount.bind(this);
-    this.cleanInputCount = this.cleanInputCount.bind(this);
-    this.cleanInputLength = this.cleanInputLength.bind(this);
+  constructor({ defaultMinimumValue=0, defaultMaximumValue=59 }) {
+    this.defaultMinimumValue = defaultMinimumValue;
+    this.defaultMaximumValue = defaultMaximumValue;
+
+    this.incrementTimer = this.incrementTimer.bind(this);
+    this.decrementTimer = this.decrementTimer.bind(this);
   }
 
-  incrementCounter(currentCounter) {
+  incrementTimer(currentTimerCount=0) {
+    const pointOfChange = '00'
+    const increaseByOneCount = value => (value + 1)
+    const nextTimerCountObject = this.changeCounter(
+      currentTimerCount, pointOfChange, increaseByOneCount
+    )
+
+    const nextTimerCount =
+      nextTimerCountObject.hoursCounter +
+      ':' + nextTimerCountObject.minutesCounter +
+      ':' + nextTimerCountObject.secondsCounter
+
+    return {currentCounter: currentTimerCount, nextCounter: nextTimerCount}
+  }
+
+  decrementTimer(currentTimerCount=0) {
+    const pointOfChange = '00'
+    const decreaseByOneCount = value => (value - 1)
+    const nextTimerCountObject = this.changeCounter(
+      currentTimerCount, pointOfChange, decreaseByOneCount
+    )
+
+    const nextTimerCount =
+      nextTimerCountObject.hoursCounter +
+      ':' + nextTimerCountObject.minutesCounter +
+      ':' + nextTimerCountObject.secondsCounter
+
+    return {currentCounter: currentTimerCount, nextCounter: nextTimerCount}
+  }
+
+  changeCounter(currentCounter, pointOfChange, arithmeticAction) {
     const counterArray = currentCounter
       .split(':')
       .map(count => parseInt(count))
 
-    const secondsCounter = this.changeInputCount(counterArray[2])
+      const secondsCounter = this.cleanMinToMaxRange(
+        arithmeticAction(counterArray[2])
+      )
 
-    const minutesCounter = secondsCounter === '59'
-      ? this.changeInputCount(counterArray[1])
-      : this.cleanInputCount(counterArray[1].toString())
+      // eslint-disable-next-line
+      const minutesCounter = secondsCounter == pointOfChange
+        ? this.cleanMinToMaxRange( arithmeticAction(counterArray[1]) )
+        : (counterArray[1])
 
-    const hoursCounter = minutesCounter === '59'
-      ? this.changeInputCount(counterArray[0], 24)
-      : this.cleanInputCount(counterArray[0].toString(), 24)
+      const hoursCounter =
+        // eslint-disable-next-line
+        (minutesCounter == pointOfChange && secondsCounter == pointOfChange)
+          ? this.cleanMinToMaxRange((arithmeticAction(counterArray[0]), 0, 23))
+          : (counterArray[0])
 
-    const nextCounter =
-      this.cleanInputLength(hoursCounter).
-        concat(
-          ':', this.cleanInputLength(minutesCounter),
-          ':', this.cleanInputLength(secondsCounter)
-        )
+      return {
+        currentCounter: currentCounter,
+        secondsCounter: this.cleanInputLength(secondsCounter),
+        minutesCounter: this.cleanInputLength(minutesCounter),
+        hoursCounter: this.cleanInputLength(hoursCounter)
+      }
 
-    return {currentCounter: currentCounter, nextCounter: nextCounter}
   }
 
-  changeInputCount = (count, maxCount=59) => {
-    const stringfyCount = (count + 1).toString()
-    if (count < 0) {
-      return maxCount.toString()
-    } else if ((count + 1) > maxCount) {
-      return '00'
-    } else if (stringfyCount.length === 1) {
-      return ('0'.concat(stringfyCount))
+  cleanMinToMaxRange(
+    currentCount,
+    defaultMinimumValue=this.defaultMinimumValue,
+    defaultMaximumValue=this.defaultMaximumValue,
+  ) {
+    if (currentCount < defaultMinimumValue) {
+      return defaultMaximumValue
+    } else if (currentCount > defaultMaximumValue) {
+      return defaultMinimumValue
     } else {
-      return stringfyCount
+      return currentCount
     }
   }
 
-  cleanInputCount = (count, maxCount= 60) => {
-    if (count < 0) {
-      return (count + 1).toString()
-    } else if (count >= maxCount) {
-      return '0'
-    } else {
-      return count
-    }
-  }
-
-  cleanInputLength = stringfyCount => {
-    if (stringfyCount.length < 2){
+  cleanInputLength(stringfyCount) {
+    if (stringfyCount.toString().length < 2){
       return '0' + stringfyCount;
     } else {
-      return stringfyCount;
+      return stringfyCount.toString();
     }
   }
+
 }
 
 export default timerUtils;
