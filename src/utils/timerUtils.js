@@ -1,9 +1,11 @@
 
 class timerUtils {
 
-  constructor({ defaultMinimumValue=0, defaultMaximumValue=59 }) {
+  constructor({ defaultMinimumValue=0, defaultMaximumValue=59, hoursMaxLimit=23 }) {
     this.defaultMinimumValue = defaultMinimumValue;
     this.defaultMaximumValue = defaultMaximumValue;
+
+    this.hoursMaxLimit = hoursMaxLimit;
 
     this.incrementTimer = this.incrementTimer.bind(this);
     this.decrementTimer = this.decrementTimer.bind(this);
@@ -56,7 +58,7 @@ class timerUtils {
       const hoursCounter =
         // eslint-disable-next-line
         (minutesCounter == pointOfChange && secondsCounter == pointOfChange)
-          ? this.cleanMinToMaxRange((arithmeticAction(counterArray[0]), 0, 23))
+          ? this.cleanMinToMaxRange((arithmeticAction(counterArray[0]), 0, this.hoursMaxLimit))
           : (counterArray[0])
 
       return {

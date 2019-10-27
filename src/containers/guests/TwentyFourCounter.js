@@ -17,7 +17,8 @@ class TwentyFourCounter extends React.Component {
       counter: timeNow,
       counterConfig: {
         defaultMinimumValue: 0,
-        defaultMaximumValue: 59
+        defaultMaximumValue: 59,
+        hoursMaxLimit: 23,
       }
     }
   }
