@@ -12,6 +12,8 @@ It uses:
 
 The project contains no third party implementation. The counter doesn't have to be a 24 hour based count.
 
+The project was build on top on my own React template, which can found [here](https://github.com/kang-marvin/react-app-template)
+
 # *Things to note*
 
 The length and thickness of the number building blocks can be modified in the `index.css` file under the ```root: {}``` variables.
